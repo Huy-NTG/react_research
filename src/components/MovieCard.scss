@@ -1,0 +1,18 @@
+.movie-rail { display: flex; gap: 16px; overflow-x: auto; padding: 0 2px 18px; scroll-snap-type: x proximity; scrollbar-color: #9fb8c2 #e8f0f2; scrollbar-width: thin; }
+.movie-rail::-webkit-scrollbar { height: 8px; }
+.movie-rail::-webkit-scrollbar-track { border-radius: 8px; background: #e8f0f2; }
+.movie-rail::-webkit-scrollbar-thumb { border-radius: 8px; background: #9fb8c2; }
+.movie-card { flex: 0 0 142px; min-width: 0; scroll-snap-align: start; }
+.poster-wrap { position: relative; aspect-ratio: 2 / 3; overflow: hidden; border-radius: 6px; background: #dce9ed; box-shadow: 0 9px 20px rgba(2, 39, 59, .16); }
+.poster-wrap img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .3s ease; }
+.movie-card:hover img { transform: scale(1.04); }
+.card-menu { position: absolute; top: 10px; right: 9px; width: 21px; height: 21px; border-radius: 50%; color: #173642; background: rgba(255,255,255,.82); font-size: 12px; letter-spacing: 1px; text-align: center; line-height: 17px; }
+.movie-card h3 { margin: 11px 0 2px; overflow: hidden; font-size: 14px; line-height: 1.35; white-space: nowrap; text-overflow: ellipsis; }
+.movie-card p { margin: 0; color: #71818a; font-size: 12px; }
+.rating { margin-left: 5px; color: #e2a400; font-weight: 700; }
+.loading-state { padding: 40px; text-align: center; color: #6f8791; }
+
+@media (max-width: 680px) {
+  .movie-card { flex-basis: 136px; }
+  .movie-card h3 { font-size: 13px; }
+}

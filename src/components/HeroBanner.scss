@@ -1,0 +1,22 @@
+@use '../assets/style/variables' as *;
+
+.hero-banner { position: relative; min-height: 348px; display: flex; align-items: center; overflow: hidden; color: white; background: linear-gradient(90deg, rgba(0, 28, 49, .94) 0%, rgba(0, 91, 137, .56) 56%, rgba(0, 159, 210, .68) 100%), url('https://image.tmdb.org/t/p/original/7m3W5y0Kx8hH0B9gA5sT7vW0pL3.jpg') center 34% / cover; }
+.hero-banner::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(0deg, rgba(0, 20, 34, .6), transparent 35%); }
+.hero-content, .hero-controls { position: relative; z-index: 1; }
+.hero-content { padding-bottom: 24px; }
+.eyebrow { margin: 0 0 8px; color: $mint; font-size: 11px; font-weight: 700; letter-spacing: 2px; }
+.hero-content h1 { margin: 0; font: 700 clamp(42px, 6vw, 64px)/.95 'Space Grotesk', sans-serif; letter-spacing: -2px; }
+.hero-content h1 span { color: $cyan; }
+.hero-copy { max-width: 760px; margin: 8px 0 20px; font-size: clamp(19px, 2.5vw, 28px); line-height: 1.2; font-weight: 600; }
+.hero-link { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border: 1px solid rgba(255,255,255,.55); border-radius: 3px; font-size: 14px; font-weight: 700; transition: background .2s ease; }
+.hero-link:hover { background: rgba(255,255,255,.16); }
+.hero-controls { position: absolute; inset: auto 0 0; height: 42px; display: flex; align-items: center; justify-content: space-between; }
+.hero-controls button { display: grid; place-items: center; padding: 0; border: 0; color: white; background: transparent; }
+.hero-controls span { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; }
+.hero-controls b { width: 7px; height: 7px; border-radius: 50%; background: $cyan; box-shadow: 15px 0 $mint, 30px 0 rgba(255,255,255,.4); margin-right: 27px; }
+
+@media (max-width: 680px) {
+  .hero-banner { min-height: 360px; }
+  .hero-content { padding-top: 30px; }
+  .hero-copy { max-width: 330px; }
+}

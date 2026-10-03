@@ -1,0 +1,36 @@
+@use '../assets/style/variables' as *;
+
+.site-header { height: 66px; padding: 0 max(24px, calc((100% - 1220px) / 2)); display: flex; align-items: center; gap: 48px; color: white; background: $navy; }
+.brand { display: inline-flex; align-items: center; gap: 7px; font: 700 29px/1 'Space Grotesk', sans-serif; letter-spacing: 3px; color: $mint; }
+.brand span { width: 56px; height: 21px; display: inline-block; border-radius: 6px 10px 10px 6px; background: $cyan; }
+.main-nav { display: flex; align-items: center; gap: 35px; margin-right: auto; }
+.main-nav a { font-weight: 700; font-size: 14px; transition: color .2s ease; }
+.main-nav a:hover, .main-nav a:focus-visible { color: $mint; }
+.header-actions { display: flex; align-items: center; gap: 19px; }
+.icon-button, .mobile-menu { display: grid; place-items: center; padding: 0; border: 0; color: white; background: transparent; }
+.icon-button:hover, .mobile-menu:hover { color: $cyan; }
+.language-button { padding: 5px 7px; border: 1px solid white; border-radius: 4px; color: white; background: transparent; font-size: 12px; font-weight: 700; }
+.profile-button { width: 32px; height: 32px; border: 0; border-radius: 50%; color: white; background: #e5004f; font-weight: 700; }
+.mobile-menu { display: none; }
+.search-bar { height: 45px; background: white; box-shadow: 0 2px 12px rgba(0, 22, 40, .06); }
+.search-bar-inner { height: 100%; display: flex; align-items: center; gap: 14px; color: #061d2d; }
+.search-bar input { width: 100%; border: 0; outline: 0; color: $ink; font-style: italic; }
+.search-bar input::placeholder { color: #98a2aa; }
+
+@media (max-width: 960px) {
+  .site-header { gap: 24px; }
+  .main-nav { gap: 18px; }
+}
+
+@media (max-width: 680px) {
+  .site-header { height: 60px; padding: 0 16px; gap: 0; justify-content: space-between; }
+  .brand { font-size: 23px; }
+  .brand span { width: 43px; height: 17px; }
+  .main-nav { position: absolute; top: 60px; right: 0; left: 0; z-index: 4; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 8px 16px 16px; background: $navy; }
+  .main-nav.is-open { display: flex; }
+  .main-nav a { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.12); }
+  .header-actions { gap: 13px; }
+  .notification-button, .search-button, .language-button { display: none; }
+  .mobile-menu { display: grid; }
+  .search-bar { height: 43px; }
+}

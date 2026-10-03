@@ -1,0 +1,13 @@
+@use '../assets/style/variables' as *;
+
+.trending { padding: 34px 0 52px; }
+.section-heading { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 21px; }
+.section-heading .eyebrow { color: #6f8791; margin-bottom: 3px; }
+.section-heading h2 { margin: 0; font: 600 30px/1 'Space Grotesk', sans-serif; }
+.period-switcher { display: flex; padding: 3px; border: 1px solid #bdd0d9; border-radius: 4px; background: white; }
+.period-switcher button { padding: 7px 16px; border: 0; border-radius: 3px; color: #49606b; background: transparent; font-size: 13px; font-weight: 700; }
+.period-switcher button.active { color: white; background: $navy; }
+
+@media (max-width: 680px) {
+  .section-heading { align-items: flex-start; flex-direction: column; gap: 17px; }
+}

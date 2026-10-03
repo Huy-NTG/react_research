@@ -1,0 +1,8 @@
+@use '../assets/style/variables' as *;
+
+.popular-section { padding: 34px 0 52px; background: #f8fafb; }
+.popular-heading { align-items: center; }
+.popular-heading h2 { font-size: 24px; }
+.popular-switcher { display: flex; overflow: hidden; border: 1px solid $navy; border-radius: 18px; }
+.popular-switcher button { padding: 7px 18px; border: 0; color: $mint; background: $navy; font-size: 13px; font-weight: 700; }
+.popular-rail { padding-bottom: 18px; }
