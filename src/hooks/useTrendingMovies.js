@@ -27,6 +27,9 @@ async function fetchTrending(period) {
 }
 
 export function useTrendingMovies(period) {
-  const query = useQuery({ queryKey: ['trending-movies', period], queryFn: () => fetchTrending(period), staleTime: 1000 * 60 * 5 })
+  const query = useQuery({ 
+    queryKey: ['trending-movies', period], 
+    queryFn: () => fetchTrending(period), staleTime: 1000 * 60 * 5 
+  })
   return { movies: query.data ?? fallbackMovies, isLoading: query.isLoading }
 }

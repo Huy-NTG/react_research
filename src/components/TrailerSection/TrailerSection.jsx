@@ -1,7 +1,8 @@
 import { Play } from 'lucide-react'
 import { useState } from 'react'
-import { useMovieTrailers } from '../hooks/useMovieTrailers'
-import TrailerModal from './TrailerModal'
+import { useMovieTrailers } from '../../hooks/useMovieTrailers'
+import TrailerModal from '../TrailerModal/TrailerModal'
+import './TrailerSection.scss'
 
 function TrailerSection({ movies }) {
   const [activeTrailer, setActiveTrailer] = useState(null)

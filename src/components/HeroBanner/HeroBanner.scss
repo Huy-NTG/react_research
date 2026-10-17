@@ -1,4 +1,4 @@
-@use '../assets/style/variables' as *;
+@use '../../assets/style/variables' as *;
 
 .hero-banner { position: relative; min-height: 348px; display: flex; align-items: center; overflow: hidden; color: white; background: linear-gradient(90deg, rgba(0, 28, 49, .94) 0%, rgba(0, 91, 137, .56) 56%, rgba(0, 159, 210, .68) 100%), url('https://image.tmdb.org/t/p/original/7m3W5y0Kx8hH0B9gA5sT7vW0pL3.jpg') center 34% / cover; }
 .hero-banner::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(0deg, rgba(0, 20, 34, .6), transparent 35%); }
