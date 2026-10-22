@@ -1,11 +1,24 @@
 import { Bell, CirclePlus, Menu, Search } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import './Header.scss'
 
 const navigation = ['Movies', 'TV Shows', 'People', 'Awards', 'More']
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
+  const [searchValue, setSearchValue] = useState(() => new URLSearchParams(location.search).get('query') || '')
+
+  useEffect(() => {
+    const searchTerm = searchValue.trim()
+    if (!searchTerm) return undefined
+    const timer = setTimeout(() => navigate(`/search?query=${encodeURIComponent(searchTerm)}&type=movie&page=1`), 400)
+    return () => clearTimeout(timer)
+  }, [navigate, searchValue])
+
+  const handleSearchChange = (event) => setSearchValue(event.target.value)
 
   return <>
     <header className="site-header">
@@ -22,7 +35,7 @@ function Header() {
         <button className="mobile-menu" type="button" aria-label="Open menu" onClick={() => setIsMenuOpen(!isMenuOpen)}><Menu size={23} /></button>
       </div>
     </header>
-    <div className="search-bar"><div className="page-width search-bar-inner"><Search size={18} aria-hidden="true" /><input aria-label="Search movies, TV shows, and people" placeholder="Search for a movie, tv show, person..." /></div></div>
+    <div className="search-bar"><div className="page-width search-bar-inner"><Search size={18} aria-hidden="true" /><input value={searchValue} onChange={handleSearchChange} onKeyDown={(event) => event.key === 'Enter' && navigate(`/search?query=${encodeURIComponent(searchValue.trim())}&type=movie&page=1`)} aria-label="Search movies and TV shows" placeholder="Search for a movie, tv show..." /></div></div>
   </>
 }
 
