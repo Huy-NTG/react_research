@@ -1,0 +1,25 @@
+.watchlist-item { display: grid; grid-template-columns: 130px 1fr; overflow: hidden; border: 1px solid #dfe2e4; border-radius: 8px; background: white; box-shadow: 0 1px 3px rgba(0, 0, 0, .08); }
+.watchlist-item-poster { grid-row: 1 / 3; height: 194px; background: #dce9ed; }
+.watchlist-item-poster img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.watchlist-item-content { min-width: 0; padding: 40px 16px 16px; }
+.watchlist-item-info { display: flex; align-items: center; gap: 10px; }
+.watchlist-score { display: grid; place-items: center; width: 45px; height: 45px; flex: 0 0 45px; border: 3px solid #d9db1c; border-radius: 50%; color: white; background: #082538; font-size: 14px; font-weight: 700; }
+.watchlist-item-title { font-size: 16px; font-weight: 700; }
+.watchlist-item-title:hover { color: #e5004f; }
+.watchlist-item-info p { margin: 5px 0 0; color: #68757e; font-size: 14px; }
+.watchlist-item-overview { display: -webkit-box; margin: 20px 0 0; overflow: hidden; line-height: 1.5; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.watchlist-item-actions { grid-column: 1 / -1; display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding: 10px 12px; border-top: 1px solid #e1e4e6; }
+.watchlist-item-actions button { display: inline-flex; align-items: center; gap: 7px; padding: 4px 0; border: 0; color: #77828b; background: transparent; font-size: 14px; }
+.watchlist-item-actions button:hover:not(:disabled) { color: #e5004f; }
+.watchlist-item-actions button:disabled { cursor: wait; opacity: .65; }
+.watchlist-item-actions button svg { display: grid; place-items: center; width: 32px; height: 32px; padding: 7px; border: 1px solid #bfc5c8; border-radius: 50%; }
+.watchlist-remove-error { flex-basis: 100%; color: #b42342; font-size: 12px; }
+
+@media (max-width: 600px) {
+  .watchlist-item { grid-template-columns: 92px 1fr; }
+  .watchlist-item-poster { height: 138px; }
+  .watchlist-item-content { padding: 18px 12px 12px; }
+  .watchlist-item-overview { margin-top: 12px; font-size: 13px; }
+  .watchlist-item-actions { gap: 6px; }
+  .watchlist-item-actions button span { display: none; }
+}
