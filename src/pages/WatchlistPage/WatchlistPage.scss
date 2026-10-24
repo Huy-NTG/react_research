@@ -1,0 +1,49 @@
+@use '../../assets/style/variables' as *;
+
+.watchlist-page { min-height: 100vh; background: #fff; color: $ink; }
+.profile-banner { min-height: 90px; background: linear-gradient(130deg, #20223c 0%, #111c35 47%, #052b45 100%); overflow: hidden; }
+.profile-banner-inner { position: relative; display: flex; align-items: center; gap: 20px; min-height: 90px; }
+.profile-banner-inner::before, .profile-banner-inner::after { position: absolute; width: 18px; height: 76px; content: ''; background: #e6004c; transform: rotate(45deg); opacity: .85; }
+.profile-banner-inner::before { left: 75px; top: -35px; }
+.profile-banner-inner::after { right: 35px; top: 25px; }
+.profile-avatar { position: relative; z-index: 1; display: grid; place-items: center; width: 50px; height: 50px; border-radius: 50%; color: white; background: #e5004f; font-size: 20px; font-weight: 700; }
+.profile-banner h1 { position: relative; z-index: 1; margin: 0; color: white; font-size: 28px; }
+.account-nav { border-bottom: 1px solid #e1e4e6; background: white; }
+.account-nav-inner { display: flex; align-items: center; justify-content: center; gap: 32px; min-height: 47px; }
+.account-nav a { display: inline-flex; align-items: center; gap: 4px; height: 47px; font-size: 14px; }
+.account-nav a:hover, .account-nav a.is-active { color: #df0750; }
+.watchlist-content { padding-top: 24px; }
+.watchlist-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.watchlist-heading h2 { margin: 0 0 12px; font-size: 23px; }
+.watchlist-heading-actions { display: flex; align-items: center; gap: 8px; }
+.watchlist-heading-actions button, .watchlist-filters button { display: inline-flex; align-items: center; gap: 6px; border: 1px solid #e0e3e6; border-radius: 18px; color: #4e5961; background: white; font-size: 13px; }
+.watchlist-heading-actions button { padding: 7px 12px; }
+.watchlist-heading-actions button:last-child { padding: 7px; }
+.watchlist-heading-actions button:hover, .watchlist-filters button:hover { border-color: #e5004f; color: #e5004f; }
+.watchlist-tabs { display: flex; gap: 8px; padding: 8px; border: 1px solid #e4e6e8; border-radius: 15px; background: #fcfcfc; }
+.watchlist-tabs button { padding: 7px 14px; border: 1px solid #e5004f; border-radius: 18px; color: #e5004f; background: white; font-size: 13px; }
+.watchlist-tabs button span { margin-left: 5px; }
+.watchlist-tabs button.is-active, .watchlist-tabs button:hover { color: white; background: #e5004f; }
+.watchlist-filters { display: flex; align-items: center; gap: 12px; margin: 10px 0 38px; padding: 8px 12px; width: fit-content; border: 1px solid #e4e6e8; border-radius: 15px; }
+.filter-label { color: #6e767b; font-size: 11px; font-weight: 700; }
+.watchlist-filters button { padding: 7px 11px; color: #e5004f; }
+.watchlist-filters .sort-button { padding: 8px; color: #4e5961; }
+.sort-button svg { transition: transform .2s ease; }
+.sort-button svg.is-ascending { transform: rotate(180deg); }
+.watchlist-empty { display: grid; justify-items: center; padding: 72px 20px; border: 1px dashed #dce2e5; border-radius: 8px; text-align: center; }
+.watchlist-empty h3 { margin: 16px 0 6px; font-size: 20px; }
+.watchlist-empty p { max-width: 430px; margin: 0 0 18px; color: #768189; font-size: 14px; }
+.watchlist-empty a { padding: 9px 16px; border-radius: 4px; color: white; background: $navy; font-size: 13px; font-weight: 700; }
+.watchlist-items { display: grid; gap: 16px; padding: 0 0 42px; }
+.watchlist-state { padding: 70px 20px; color: #6f8791; text-align: center; }
+.watchlist-state-error { color: #b42342; }
+
+@media (max-width: 680px) {
+  .profile-banner-inner { min-height: 78px; }
+  .profile-banner h1 { font-size: 22px; }
+  .profile-avatar { width: 42px; height: 42px; }
+  .account-nav-inner { justify-content: flex-start; gap: 20px; overflow-x: auto; white-space: nowrap; }
+  .watchlist-heading { align-items: flex-start; flex-direction: column; }
+  .watchlist-heading h2 { margin-bottom: 0; }
+  .watchlist-filters { flex-wrap: wrap; }
+}

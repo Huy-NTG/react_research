@@ -1,5 +1,7 @@
 # React + Vite
 
+Create a `.env` file with `VITE_TMDB_READ_ACCESS_TOKEN` and, optionally, `VITE_TMDB_ACCOUNT_ID` to enable account actions. The account id defaults to `22301558`.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

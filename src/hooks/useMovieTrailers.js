@@ -11,8 +11,7 @@ async function fetchMovieTrailers(movies) {
     if (!response.ok) return []
     const data = await response.json()
     const videos = data.results ?? []
-    const trailer = videos.find((video) => video.site === 'YouTube' && video.type === 'Trailer' && video.official)
-      ?? videos.find((video) => video.site === 'YouTube' && video.type === 'Trailer')
+    const trailer = videos.find((video) => video.site === 'YouTube' && video.type === 'Trailer' && video.official) ?? videos.find((video) => video.site === 'YouTube' && video.type === 'Trailer')
     return trailer ? [{ ...trailer, movie }] : []
   }))
 
@@ -20,11 +19,6 @@ async function fetchMovieTrailers(movies) {
 }
 
 export function useMovieTrailers(movies) {
-  const query = useQuery({
-    queryKey: ['movie-trailers', movies.map((movie) => movie.id)],
-    queryFn: () => fetchMovieTrailers(movies),
-    enabled: movies.length > 0,
-    staleTime: 1000 * 60 * 10,
-  })
+  const query = useQuery({ queryKey: ['movie-trailers', movies.map((movie) => movie.id)], queryFn: () => fetchMovieTrailers(movies), enabled: movies.length > 0, staleTime: 1000 * 60 * 10 })
   return { trailers: query.data ?? [], isLoading: query.isLoading }
 }
