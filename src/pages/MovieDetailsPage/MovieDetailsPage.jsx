@@ -23,6 +23,8 @@ function toMovieCard(movie) {
 }
 
 function MovieDetailsPage() {
+  //throw new Error("Lỗi giao diện !")
+
   const { movieId } = useParams()
   const [searchParams] = useSearchParams()
   const mediaType = searchParams.get('type') === 'tv' ? 'tv' : 'movie'
