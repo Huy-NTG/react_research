@@ -4,14 +4,17 @@ import TrendingSection from '../../components/TrendingSection/TrendingSection'
 import Footer from '../../components/Footer/Footer'
 
 function HomePage() {
-  return <div className="app-shell">
-    <Header />
-    <main>
-      <HeroBanner />
-      <TrendingSection />
-    </main>
-    <Footer />
-  </div>
+  //throw new Error("Lỗi giao diện !")
+  return (
+    <div className="app-shell">
+      <Header />
+      <main>
+        <HeroBanner />
+        <TrendingSection />
+      </main>
+      <Footer />
+    </div>
+  )
 }
 
 export default HomePage

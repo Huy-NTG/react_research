@@ -9,6 +9,8 @@ function formatDate(date) {
 }
 
 function SearchPage() {
+  //throw new Error("Lỗi giao diện !")
+
   const [params, setParams] = useSearchParams()
   const query = params.get('query')?.trim() || ''
   const type = params.get('type') === 'tv' ? 'tv' : 'movie'
