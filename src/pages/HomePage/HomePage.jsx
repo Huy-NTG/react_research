@@ -4,7 +4,8 @@ import TrendingSection from '../../components/TrendingSection/TrendingSection'
 import Footer from '../../components/Footer/Footer'
 
 function HomePage() {
-  //throw new Error("Lỗi giao diện !")
+  // Nếu muốn lỗi thì tắt comment dòng dưới đây để kiểm tra ErrorBoundary
+  // throw new Error("Lỗi giao diện !")
   return (
     <div className="app-shell">
       <Header />
