@@ -1,0 +1,33 @@
+┌─────────────────────────────────────────────────────────────┐
+ |                     React Component Tree                    |
+ |                (Bao bọc bởi <ErrorBoundary>)                 |
+ └──────────────┬──────────────────────────────┬───────────────┘
+                │                              │
+        [Hoạt động bình thường]        [Phát sinh Runtime Error]
+                │                              │
+                ▼                              ▼
+ ┌─────────────────────────────┐ ┌─────────────────────────────┐
+ |     Render Component Con    | | static getDerivedStateFromError |
+ |  (Trả về this.props.children)│ |   (Cập nhật hasError: true) │
+ └─────────────────────────────┘ └──────────────┬──────────────┘
+                                                │
+                                                ▼
+                                 ┌─────────────────────────────┐
+                                 |     componentDidCatch()     |
+                                 | (Ghi log lỗi qua console.error)|
+                                 └──────────────┬──────────────┘
+                                                │
+                                                ▼
+                                 ┌─────────────────────────────┐
+                                 |      Render Fallback UI     |
+                                 |  (Hiển thị giao diện cảnh   |
+                                 |   báo phong cách TMDb)      |
+                                 └──────┬───────────────┬──────┘
+                                        │               │
+                     [Bấm nút "Thử tải lại"]     [Bấm nút "Về trang chủ"]
+                                        │               │
+                                        ▼               ▼
+                                 ┌──────────────┐┌──────────────┐
+                                 | handleReset()|│ window.href  |
+                                 | (Reset state)|│ (Điều hướng) |
+                                 └──────────────┘└──────────────┘

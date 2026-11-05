@@ -1,7 +1,7 @@
+import { defineConfig } from 'vite'
 import react, { reactCompilerPreset } from '@vitejs/plugin-react'
 import { visualizer } from 'rollup-plugin-visualizer'
 import babel from '@rolldown/plugin-babel'
-import { defineConfig } from 'vite'
 import { fileURLToPath } from 'node:url'
 /* global process */
 export default defineConfig(({ command }) => {
@@ -50,5 +50,10 @@ export default defineConfig(({ command }) => {
         brotliSize: true,
       }),
     ],
+    // 👇 BỔ SUNG KHỐI CẤU HÌNH TEST NÀY ĐỂ CHẠY VITEST THÀNH CÔNG
+    test: {
+      globals: true,
+      environment: 'jsdom', // Giả lập môi trường trình duyệt (giải quyết triệt để lỗi document is not defined)
+    },
   }
 })
