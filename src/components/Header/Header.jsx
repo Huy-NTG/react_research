@@ -1,6 +1,6 @@
 import { Bell, CirclePlus, Menu, Search } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import './Header.scss'
 
 const navigation = ['Movies', 'TV Shows', 'People', 'Awards', 'More']
@@ -42,9 +42,9 @@ function Header() {
 
   return <>
     <header className="site-header">
-      <a className="brand" href="/" aria-label="TMDB home">TMDB<span /></a>
+      <Link className="brand" to="/" aria-label="TMDB home">TMDB<span /></Link>
       <nav className={`main-nav ${isMenuOpen ? 'is-open' : ''}`} aria-label="Main navigation">
-        {navigation.map((item) => <a href={`/${item.toLowerCase().replace(' ', '-')}`} key={item}>{item}</a>)}
+        {navigation.map((item) => <Link to={`/${item.toLowerCase().replace(' ', '-')}`} key={item}>{item}</Link>)}
       </nav>
       <div className="header-actions">
         <button className="icon-button" type="button" aria-label="Add to list"><CirclePlus size={22} /></button>
@@ -55,21 +55,21 @@ function Header() {
           {isProfileOpen && <div className="profile-dropdown" id="profile-dropdown" role="menu">
             <div className="profile-summary">
               <strong>NguyenHuy120304</strong>
-              <a href="/profile">Xem hồ sơ</a>
+              <Link to="/profile">Xem hồ sơ</Link>
             </div>
             <div className="profile-links">
-              <a href="/discussions" role="menuitem">Thảo luận</a>
-              <a href="/lists" role="menuitem">Danh sách</a>
-              <a href="/ratings" role="menuitem">Đánh giá</a>
-              <a href="/rankings" role="menuitem">Xếp hạng</a>
-              <a href="/watchlist" role="menuitem">Danh sách theo dõi</a>
+              <Link to="/discussions" role="menuitem">Thảo luận</Link>
+              <Link to="/lists" role="menuitem">Danh sách</Link>
+              <Link to="/ratings" role="menuitem">Đánh giá</Link>
+              <Link to="/rankings" role="menuitem">Xếp hạng</Link>
+              <Link to="/watchlist" role="menuitem">Danh sách theo dõi</Link>
             </div>
             <div className="profile-links">
-              <a href="/api" role="menuitem">API</a>
+              <Link to="/api" role="menuitem">API</Link>
             </div>
             <div className="profile-links">
-              <a href="/profile/edit" role="menuitem">Chỉnh sửa hồ sơ</a>
-              <a href="/settings" role="menuitem">Cài đặt</a>
+              <Link to="/profile/edit" role="menuitem">Chỉnh sửa hồ sơ</Link>
+              <Link to="/settings" role="menuitem">Cài đặt</Link>
             </div>
             <div className="profile-links">
               <button type="button" role="menuitem" onClick={() => setIsProfileOpen(false)}>Đăng xuất</button>

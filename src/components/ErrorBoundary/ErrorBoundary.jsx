@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from '../Header/Header';
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -29,6 +30,8 @@ class ErrorBoundary extends Component {
   render() {
     if (this.state.hasError) {
       return (
+        <>
+        <Header/>
         <div style={{
           display: 'flex',
           flexDirection: 'column',
@@ -90,6 +93,7 @@ class ErrorBoundary extends Component {
             </button>
           </div>
         </div>
+        </>
       );
     }
 
