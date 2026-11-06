@@ -62,7 +62,7 @@ function Header() {
               <Link to="/lists" role="menuitem">Danh sách</Link>
               <Link to="/ratings" role="menuitem">Đánh giá</Link>
               <Link to="/rankings" role="menuitem">Xếp hạng</Link>
-              <Link to="/watchlist" role="menuitem">Danh sách theo dõi</Link>
+              <a href="/watchlist" role="menuitem">Danh sách theo dõi</a>
             </div>
             <div className="profile-links">
               <Link to="/api" role="menuitem">API</Link>
