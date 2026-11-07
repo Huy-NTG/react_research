@@ -62,23 +62,34 @@ export function useWatchlist(mediaType) {
 
 export function useRemoveWatchlist(mediaType, itemId) {
   const queryClient = useQueryClient()
-  const queryKey = ['account-watchlist', accountId, mediaType]
+  const watchlistType = mediaType === 'tv' ? 'tv' : 'movies'
+  const queryKey = ['account-watchlist', accountId, watchlistType]
+  const detailQueryKey = ['account-movies', accountId, mediaType, 'watchlist']
 
   return useMutation({
     mutationFn: () => removeFromWatchlist(mediaType, itemId),
     onMutate: async () => {
-      await queryClient.cancelQueries({ queryKey })
-      const previous = queryClient.getQueryData(queryKey)
+      await Promise.all([
+        queryClient.cancelQueries({ queryKey }),
+        queryClient.cancelQueries({ queryKey: detailQueryKey }),
+      ])
+      const previous = {
+        watchlist: queryClient.getQueryData(queryKey),
+        detail: queryClient.getQueryData(detailQueryKey),
+      }
       queryClient.setQueryData(queryKey, (watchlist) => {
         if (!watchlist) return watchlist
         const items = watchlist.items.filter((item) => item.id !== Number(itemId))
         return { items, total: Math.max(0, watchlist.total - 1) }
       })
+      queryClient.setQueryData(detailQueryKey, (items) =>
+        items?.filter((item) => item.id !== Number(itemId)),
+      )
       return { previous }
     },
     onError: (_error, _variables, context) => {
-      queryClient.setQueryData(queryKey, context?.previous)
+      queryClient.setQueryData(queryKey, context?.previous?.watchlist)
+      queryClient.setQueryData(detailQueryKey, context?.previous?.detail)
     },
-    onSettled: () => queryClient.invalidateQueries({ queryKey }),
   })
 }

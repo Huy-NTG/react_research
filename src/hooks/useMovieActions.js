@@ -44,6 +44,7 @@ function writeLocalList(list) {
 function useAccountMovieMutation(type, movie, mediaType, queryKey) {
   const queryClient = useQueryClient()
   const movieId = Number(movie?.id)
+  const watchlistPageKey = ['account-watchlist', accountId, mediaType === 'tv' ? 'tv' : 'movies']
   return useMutation({
     mutationFn: (enabled) => updateAccountMovie(type, movieId, enabled, mediaType),
     onMutate: async (enabled) => {
@@ -55,7 +56,10 @@ function useAccountMovieMutation(type, movie, mediaType, queryKey) {
       return { previous }
     },
     onError: (_error, _enabled, context) => queryClient.setQueryData(queryKey, context?.previous),
-    onSettled: () => queryClient.invalidateQueries({ queryKey }),
+    onSettled: () => Promise.all([
+      queryClient.invalidateQueries({ queryKey }),
+      ...(type === 'watchlist' ? [queryClient.invalidateQueries({ queryKey: watchlistPageKey })] : []),
+    ]),
   })
 }
 
